@@ -5,6 +5,8 @@ import BtnDisplay from './components/BtnDisplay';
 function App() {
 
   const [time, setTime] = useState({ms:0, s:0, m:0, h:0});
+  const [interv, setInterv] = useState();
+  const [status, setStatus] = useState(0);
 
   let updatedMs = time.ms, updatedS = time.s, updatedM = time.m, updatedH = time.h;
 
@@ -28,13 +30,19 @@ function App() {
 
   const start = () => {
     run();
-    setInterval(run, 10);
+    setStatus(1)
+    setInterv(setInterval(run, 10));
+  }
+
+  const stop = () => {
+    clearInterval(interv);
+    setStatus(2);
   }
 
   return (
     <div>
       <Display time={time}/>
-      <BtnDisplay start={start}/>
+      <BtnDisplay start={start} status={status} stop={stop}/>
     </div>
   );
 }
