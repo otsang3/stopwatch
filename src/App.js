@@ -4,7 +4,8 @@ import BtnDisplay from './components/BtnDisplay';
 
 function App() {
 
-  const [time, setTime] = useState({ms:0, s:0, m:0, h:0});
+  const initialTime = {ms:0, s:0, m:0, h:0}
+  const [time, setTime] = useState(initialTime);
   const [interv, setInterv] = useState();
   const [status, setStatus] = useState(0);
 
@@ -39,10 +40,15 @@ function App() {
     setStatus(2);
   }
 
+  const reset = () => {
+    clearInterval(interv);
+    setTime(initialTime)
+  }
+
   return (
     <div>
       <Display time={time}/>
-      <BtnDisplay start={start} status={status} stop={stop}/>
+      <BtnDisplay reset={reset} start={start} status={status} stop={stop}/>
     </div>
   );
 }
