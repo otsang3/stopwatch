@@ -43,12 +43,16 @@ function App() {
   const reset = () => {
     clearInterval(interv);
     setTime(initialTime)
+    setStatus(0)
   }
 
   return (
-    <div>
-      <Display time={time}/>
-      <BtnDisplay reset={reset} start={start} status={status} stop={stop}/>
+    <div className="app">
+      <div className="main-container">
+        <Display time={time}/>
+        <BtnDisplay reset={reset} start={start} status={status} stop={stop}/>
+      </div>
+      
     </div>
   );
 }

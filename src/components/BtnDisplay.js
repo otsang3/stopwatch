@@ -8,14 +8,11 @@ function BtnDisplay(props) {
             <button onClick={props.start}>START</button>
             }
             {props.status === 1 &&
-            <div>
                 <button onClick={props.stop}>STOP</button>
-                <button onClick={props.reset}>RESET</button>
-            </div>
             }
             {props.status === 2 &&
             <div>
-                <button onClick={props.start}>RESUME</button>
+                <button style={{marginRight: "0.5em"}} onClick={props.start}>RESUME</button>
                 <button onClick={props.reset}>RESET</button>
             </div>
             }
